@@ -27,6 +27,9 @@ const Navbar = ({ toggle, history }) => {
             <NavItem>
               <NavLink to="/">Home</NavLink>
             </NavItem>
+            {/* <NavItem>
+              <NavLink to="/user/dashboard">Dashboard</NavLink>
+            </NavItem> */}
             {!isAuthenticated() && (
               <>
                 <NavItem>
@@ -49,6 +52,9 @@ const Navbar = ({ toggle, history }) => {
                   >
                     Sign out
                   </SignOutLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink to="/user/dashboard">Dashboard</NavLink>
                 </NavItem>
               </>
             )}

@@ -18,9 +18,7 @@ const NavMenuMobile = ({ isOpen, toggle, history }) => {
         <NavItem>
           <NavLink to="/">Home</NavLink>
         </NavItem>
-        <NavItem>
-          <NavLink to="/dashboard">dashboard</NavLink>
-        </NavItem>
+
         {!isAuthenticated() && (
           <>
             <NavItem>
@@ -33,6 +31,9 @@ const NavMenuMobile = ({ isOpen, toggle, history }) => {
         )}
         {isAuthenticated() && (
           <>
+            <NavItem>
+              <NavLink to="/user/dashboard">Dashboard</NavLink>
+            </NavItem>
             <NavItem>
               <SignOutLinkMobile
                 onClick={() =>

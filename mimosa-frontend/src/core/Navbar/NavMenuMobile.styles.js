@@ -10,7 +10,7 @@ export const NavOpenMenu = styled.div`
   width: 100%;
   padding: 4rem 0 3rem;
   transition: all.4s;
-
+  z-index: 999;
   @media (min-width: 767px) {
     display: none;
   }
