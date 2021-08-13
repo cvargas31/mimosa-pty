@@ -48,3 +48,16 @@ export const NavClose = styled(AiOutlineClose)`
     color: #e7c8b2;
   }
 `;
+
+export const SignOutLinkMobile = styled.span`
+  color: black;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  
+  &:hover {
+    color: #e7c8b2;
+  }
+`

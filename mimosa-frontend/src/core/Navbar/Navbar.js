@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Link, withRouter } from "react-router-dom";
-import styled from "styled-components";
+import { withRouter, Link } from "react-router-dom";
 import {
   Header,
   Nav,
@@ -13,38 +12,56 @@ import {
   NavToggle,
   NavWishlist,
   IconContainer,
-  NavMenuCart
+  NavMenuCart,
+  SignOutLink,
 } from "./Navbar.styles";
+import { signout, isAuthenticated } from "../../auth";
 
-
-const Navbar = ({toggle}) => {
-
-
+const Navbar = ({ toggle, history }) => {
   return (
-      <Header>
-        <Nav>
-          <NavLogo to="/">Mimosa</NavLogo>
-          <NavMenu>
-            <NavList>
-              <NavItem>
-                <NavLink to="/">Home</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink to='signin'>Shop</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink to='signup'>Promo</NavLink>
-              </NavItem>
-            </NavList>
-            {/* <NavClose/> */}
-          </NavMenu>
-          <IconContainer>
-            <NavWishlist />
-            <NavMenuCart/>
-            <NavToggle onClick={toggle}/>
-          </IconContainer>
-        </Nav>
-      </Header>
+    <Header>
+      <Nav>
+        <NavLogo to="/">Mimosa</NavLogo>
+        <NavMenu>
+          <NavList>
+            <NavItem>
+              <NavLink to="/">Home</NavLink>
+            </NavItem>
+            {!isAuthenticated() && (
+              <>
+                <NavItem>
+                  <NavLink to="signin">Sign in</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink to="signup">Sign up</NavLink>
+                </NavItem>
+              </>
+            )}
+            {isAuthenticated() && (
+              <>
+                <NavItem>
+                  <SignOutLink
+                    onClick={() =>
+                      signout(() => {
+                        history.push("/");
+                      })
+                    }
+                  >
+                    Sign out
+                  </SignOutLink>
+                </NavItem>
+              </>
+            )}
+          </NavList>
+          {/* <NavClose/> */}
+        </NavMenu>
+        <IconContainer>
+          <NavWishlist />
+          <NavMenuCart />
+          <NavToggle onClick={toggle} />
+        </IconContainer>
+      </Nav>
+    </Header>
   );
 };
 
