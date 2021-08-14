@@ -3,24 +3,24 @@ import { isAuthenticated } from "../auth";
 import { Link } from "react-router-dom";
 import {Container, Row, Col} from 'react-bootstrap'
 
-const UserDashboard = () => {
+const AdminDashboard = () => {
   const {
     user: { _id, name, email, role },
   } = isAuthenticated();
 
-  const userLinks = () => {
+  const adminLinks = () => {
     return (
       <div className="card">
         <h4 className="card-header">User Links</h4>
         <ul className="list-group">
           <li className="list-group-item">
-            <Link className="nav-link" to="/cart">
-              My Cart
+            <Link className="nav-link" to="/create/category">
+              Create Category
             </Link>
           </li>
           <li className="list-group-item">
-            <Link className="nav-link" to="/profile/update">
-              Update Profile
+            <Link className="nav-link" to="/create/product">
+              Create Product
             </Link>
           </li>
         </ul>
@@ -28,7 +28,7 @@ const UserDashboard = () => {
     );
   };
 
-  const userInfo = () => {
+  const adminInfo = () => {
     return (
       <div className="card mb-5">
         <h3 className="card-header">User Information</h3>
@@ -43,25 +43,14 @@ const UserDashboard = () => {
     );
   };
 
-  const purchaseHistory = () => {
-    return (
-      <div className="card mb-5">
-        <h3 className="card-header">Purchase history</h3>
-        <ul className="list-group">
-          <li className="list-group-item">history</li>
-        </ul>
-      </div>
-    );
-  };
   return (
     <Container>
-      <Row className="mt-2">
-        <Col lg={4} xs={12}>{userLinks()}</Col>
-        <Col lg={8} xs={12}>{userInfo()}</Col>
-        <Col lg>{purchaseHistory()}</Col>
+      <Row className=" mt-5">
+        <Col lg={4} xs={12}>{adminLinks()}</Col>
+        <Col lg={8}  xs={12}>{adminInfo()}</Col>
       </Row>
     </Container>
   );
 };
 
-export default UserDashboard;
+export default AdminDashboard;

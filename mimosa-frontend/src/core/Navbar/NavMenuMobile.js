@@ -29,11 +29,18 @@ const NavMenuMobile = ({ isOpen, toggle, history }) => {
             </NavItem>
           </>
         )}
+        {isAuthenticated() && isAuthenticated().user.role === 0 && (
+          <NavItem>
+            <NavLink to="/user/dashboard">Dashboard</NavLink>
+          </NavItem>
+        )}
+        {isAuthenticated() && isAuthenticated().user.role === 1 && (
+          <NavItem>
+            <NavLink to="/admin/dashboard">Dashboard</NavLink>
+          </NavItem>
+        )}
         {isAuthenticated() && (
           <>
-            <NavItem>
-              <NavLink to="/user/dashboard">Dashboard</NavLink>
-            </NavItem>
             <NavItem>
               <SignOutLinkMobile
                 onClick={() =>
